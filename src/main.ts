@@ -1,14 +1,14 @@
 import data from "../input";
-import { planifyLab } from "./planify_lab";
+import { planifyLab } from "./planify_lab/planify_lab";
 
 export function main() {
   const samples = data.samples;
   const equipements = data.equipment;
   const technicians = data.technicians;
 
-  planifyLab();
+  const schedule = planifyLab(samples, equipements, technicians);
 
-  return "end";
+  return console.log(schedule);
 }
 
 if (require.main === module) {
