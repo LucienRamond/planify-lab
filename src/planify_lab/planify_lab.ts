@@ -1,15 +1,20 @@
 import { sort_samples } from "../samples/samples";
-import { EquipmentsType, SampleType, TechniciansType } from "../utils/types";
+import {
+  EquipmentsType,
+  InputData,
+  SampleType,
+  TechniciansType,
+} from "../utils/types";
 import { schedule } from "../schedule/schedule";
 import { metrics } from "../metrics/metrics";
 import { sort_technicians } from "../technicians/technicians";
 import { sort_equipments } from "../equipments/equipments";
 
-export function planifyLab(
-  samples: SampleType[],
-  equipements: EquipmentsType[],
-  technicians: TechniciansType[],
-) {
+export function planifyLab(data: InputData) {
+  const samples = data.samples;
+  const equipements = data.equipment;
+  const technicians = data.technicians;
+
   // Trie les échantillons par order de priorité
   const sorted_samples = sort_samples(samples);
 

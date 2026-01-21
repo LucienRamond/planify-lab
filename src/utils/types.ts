@@ -33,4 +33,16 @@ type ScheduleLineType = {
   priority: string;
 };
 
-export { SampleType, TechniciansType, EquipmentsType, ScheduleLineType };
+type InputData = {
+  samples: SampleType[];
+  equipment: EquipmentsType[];
+  technicians: TechniciansType[];
+};
+
+export {
+  SampleType,
+  TechniciansType,
+  EquipmentsType,
+  ScheduleLineType,
+  InputData,
+};
