@@ -7,6 +7,10 @@ const tissue_equipments: EquipmentsType[] = [];
 // Trie les equipements par types et init le prochain créneau
 export function sort_equipments(equipments: EquipmentsType[]) {
   equipments.map((equipment) => {
+    // Return si l'équipement n'est pas disponible aujourd'hui
+    if (equipment.available == false) {
+      return;
+    }
     switch (equipment.type) {
       case "BLOOD":
         blood_equipments.push({
