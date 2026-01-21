@@ -8,7 +8,7 @@ export function main() {
 
   const schedule = planifyLab(samples, equipements, technicians);
 
-  console.log(schedule);
+  return console.log(schedule);
 }
 
 if (require.main === module) {

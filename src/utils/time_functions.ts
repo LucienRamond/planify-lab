@@ -26,6 +26,7 @@ const starttime_calculation = (
   return start_time;
 };
 
+// Calcule le temps d'analyse du calendrier
 const total_analysis_time = (starting_time: string, end_time: string) => {
   const [starting_hour, starting_minutes] = starting_time.split(":");
   const [ending_hour, ending_minutes] = end_time.split(":");
