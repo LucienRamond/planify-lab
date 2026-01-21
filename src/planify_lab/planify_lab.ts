@@ -23,7 +23,12 @@ export function planifyLab(
   const final_schedule = schedule(sorted_samples);
 
   // Crée les statistiques finales
-  const final_metrics = metrics(final_schedule, samples);
+  const final_metrics = metrics(
+    final_schedule,
+    samples,
+    technicians.length,
+    equipements.length,
+  );
 
   const response = {
     schedule: final_schedule,
