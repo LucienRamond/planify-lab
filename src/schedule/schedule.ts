@@ -5,8 +5,8 @@ export function schedule(sorted_samples: SampleType[]) {
   const schedule: ScheduleLineType[] = [];
 
   // Crée chaque ligne du calendrier
-  sorted_samples.map((sample, index) => {
-    return schedule.push(time_slot(sample, index));
+  sorted_samples.map((sample) => {
+    return schedule.push(time_slot(sample));
   });
 
   return schedule;
