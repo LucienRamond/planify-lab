@@ -1,14 +1,23 @@
 import { endtime_calculation } from "../utils/time_functions";
-import { SampleType, ScheduleLineType, TechniciansType } from "../utils/types";
+import {
+  EquipmentsType,
+  SampleType,
+  ScheduleLineType,
+  TechniciansType,
+} from "../utils/types";
 import {
   updateTechnician,
   getTechniciansBySpeciality,
 } from "../technicians/technicians";
+import { getEquipmentsByType, updateEquipment } from "../equipments/equipments";
 
 export function time_slot(sample: SampleType) {
   let technicianId = "";
+  let equipmentId = "";
   let startTime = sample.arrivalTime;
   let endTime = endtime_calculation(startTime, sample.analysisTime);
+
+  // v----------------------------------------Technicians-------------------------------------------------------v
 
   // Recupere la liste des techniciens par specialité + general
   let technicians: TechniciansType[] = getTechniciansBySpeciality(sample.type);
@@ -24,12 +33,32 @@ export function time_slot(sample: SampleType) {
 
   technicianId = technicians[0].id;
 
+  // ^----------------------------------------Technicians-------------------------------------------------------^
+
+  // v-----------------------------------------Equipments-------------------------------------------------------v
+
+  // Recupere la liste des techniciens par specialité + general
+  let equipments: EquipmentsType[] = getEquipmentsByType(sample.type);
+
+  // Update l'heure de départ si l'équipement n'est dispo qu'apres l'heure d'arrivée de l'échantillon et du technicien
+  if (equipments[0].nextSlot && equipments[0].nextSlot > startTime) {
+    startTime = equipments[0].nextSlot;
+    endTime = endtime_calculation(startTime, sample.analysisTime);
+  }
+
+  // Update le prochain créneau du technicien utilisé
+  updateEquipment(equipments[0], endTime);
+
+  equipmentId = equipments[0].id;
+
+  // ^-----------------------------------------Equipments-------------------------------------------------------^
+
   return {
     sampleId: sample.id,
     technicianId: technicianId,
     startTime: startTime,
     endTime: endTime,
     priority: sample.priority,
-    equipmentId: "",
+    equipmentId: equipmentId,
   };
 }

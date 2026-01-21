@@ -16,11 +16,12 @@ type TechniciansType = {
   nextSlot?: string;
 };
 
-type EquipementsType = {
+type EquipmentsType = {
   id: string;
   name: string;
   type: string;
   available: boolean;
+  nextSlot?: string;
 };
 
 type ScheduleLineType = {
@@ -32,4 +33,4 @@ type ScheduleLineType = {
   priority: string;
 };
 
-export { SampleType, TechniciansType, EquipementsType, ScheduleLineType };
+export { SampleType, TechniciansType, EquipmentsType, ScheduleLineType };

@@ -1,12 +1,13 @@
 import { sort_samples } from "../samples/samples";
-import { EquipementsType, SampleType, TechniciansType } from "../utils/types";
+import { EquipmentsType, SampleType, TechniciansType } from "../utils/types";
 import { schedule } from "../schedule/schedule";
 import { metrics } from "../metrics/metrics";
 import { sort_technicians } from "../technicians/technicians";
+import { sort_equipments } from "../equipments/equipments";
 
 export function planifyLab(
   samples: SampleType[],
-  equipements: EquipementsType[],
+  equipements: EquipmentsType[],
   technicians: TechniciansType[],
 ) {
   // Trie les échantillons par order de priorité
@@ -14,6 +15,9 @@ export function planifyLab(
 
   // Trie les techniciens par catégories
   sort_technicians(technicians);
+
+  // Trie les equipements par catégories
+  sort_equipments(equipements);
 
   // Crée le calendrier finale
   const final_schedule = schedule(sorted_samples);

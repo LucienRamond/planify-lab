@@ -51,6 +51,7 @@ export function getTechniciansBySpeciality(sampleType: string) {
       break;
   }
 
+  // Trie par prochain créneau disponible
   technicians.sort((a, b) => {
     const nameA = a.nextSlot;
     const nameB = b.nextSlot;
@@ -69,6 +70,7 @@ export function getTechniciansBySpeciality(sampleType: string) {
   return technicians;
 }
 
+// Fonction qui update le prochain créneau d'un technicien
 export function updateTechnician(technician: TechniciansType, endTime: string) {
   if (blood_technicians.includes(technician)) {
     blood_technicians.forEach((technician, index) => {
