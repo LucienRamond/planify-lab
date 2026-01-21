@@ -96,10 +96,3 @@ export function updateTechnician(technician: TechniciansType, endTime: string) {
     });
   }
 }
-
-export {
-  blood_technicians,
-  urine_technicians,
-  tissue_technicians,
-  general_technicians,
-};

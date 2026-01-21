@@ -4,6 +4,7 @@ const blood_equipments: EquipmentsType[] = [];
 const urine_equipments: EquipmentsType[] = [];
 const tissue_equipments: EquipmentsType[] = [];
 
+// Trie les equipements par types et init le prochain créneau
 export function sort_equipments(equipments: EquipmentsType[]) {
   equipments.map((equipment) => {
     switch (equipment.type) {
@@ -27,8 +28,6 @@ export function sort_equipments(equipments: EquipmentsType[]) {
         break;
     }
   });
-  console.log(blood_equipments, urine_equipments, tissue_equipments);
-
   return;
 }
 
@@ -65,7 +64,7 @@ export function getEquipmentsByType(sampleType: string) {
   return equipments;
 }
 
-// Fonction qui update le prochain créneau d'un equipement
+// Update le prochain créneau d'un equipement
 export function updateEquipment(equipment: EquipmentsType, endTime: string) {
   if (blood_equipments.includes(equipment)) {
     blood_equipments.forEach((equipment, index) => {
@@ -83,5 +82,3 @@ export function updateEquipment(equipment: EquipmentsType, endTime: string) {
     });
   }
 }
-
-export { blood_equipments, urine_equipments, tissue_equipments };

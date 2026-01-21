@@ -1,10 +1,5 @@
 import { endtime_calculation } from "../utils/time_functions";
-import {
-  EquipmentsType,
-  SampleType,
-  ScheduleLineType,
-  TechniciansType,
-} from "../utils/types";
+import { EquipmentsType, SampleType, TechniciansType } from "../utils/types";
 import {
   updateTechnician,
   getTechniciansBySpeciality,
