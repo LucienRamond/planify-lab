@@ -13,6 +13,7 @@ type TechniciansType = {
   speciality: string;
   startTime: string;
   endTime: string;
+  nextSlot?: string;
 };
 
 type EquipementsType = {

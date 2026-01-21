@@ -1,38 +1,13 @@
-import { endtime_calculation } from "../utils/functions";
-import {
-  EquipementsType,
-  SampleType,
-  ScheduleLineType,
-  TechniciansType,
-} from "../utils/types";
+import { SampleType, ScheduleLineType } from "../utils/types";
+import { time_slot } from "./time_slot";
 
-export function schedule(
-  sorted_samples: SampleType[],
-  technicians: TechniciansType[],
-  equipements: EquipementsType[],
-) {
+export function schedule(sorted_samples: SampleType[]) {
   const schedule: ScheduleLineType[] = [];
 
+  // Crée chaque ligne du calendrier
   sorted_samples.map((sample) => {
-    technicians.map((technician) => {
-      if (technician.speciality == sample.type) {
-        equipements.map((equipement) => {
-          if (equipement.available == true && equipement.type == sample.type) {
-            return schedule.push({
-              sampleId: sample.id,
-              technicianId: technician.id,
-              equipmentId: equipement.id,
-              startTime: sample.arrivalTime,
-              endTime: endtime_calculation(
-                sample.arrivalTime,
-                sample.analysisTime,
-              ),
-              priority: sample.priority,
-            });
-          }
-        });
-      }
-    });
+    return schedule.push(time_slot(sample));
   });
+
   return schedule;
 }
