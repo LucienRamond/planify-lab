@@ -41,7 +41,7 @@ export function metrics(
 
   return {
     totalTime: totalTime,
-    efficiency: efficiency,
+    efficiency: parseFloat(efficiency.toFixed(2)),
     conflicts: conflicts,
   };
 }
