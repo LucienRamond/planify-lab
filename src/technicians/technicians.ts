@@ -96,3 +96,12 @@ export function updateTechnician(technician: TechniciansType, endTime: string) {
     });
   }
 }
+
+// Recupère tous les techniciens
+export function getAllTechnicians() {
+  return blood_technicians.concat(
+    urine_technicians,
+    tissue_technicians,
+    general_technicians,
+  );
+}
